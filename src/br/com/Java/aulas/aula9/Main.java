@@ -55,8 +55,10 @@ class Consumer implements Runnable {
             // dorme de 0 a 3 segundos, lê o valor do buffer e adiciona a soma
             try {
                 Thread.sleep(generator.nextInt(3000));
-                sum += sharedLocation.blockingGet();
+                int x = sharedLocation.blockingGet();
+                sum += x;
                 System.out.printf("\t\t\t%2d%n", sum);
+                System.out.printf("Consumido do Buffer \t\t\t%2d%n", sum);
             } catch (InterruptedException exception) {
                 Thread.currentThread().interrupt();
             }
